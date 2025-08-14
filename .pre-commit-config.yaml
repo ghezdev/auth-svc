@@ -1,0 +1,13 @@
+fail_fast: true
+files: '\.py$'
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.6            # usa la última estable
+    hooks:
+      - id: ruff
+        verbose: true
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        verbose: true
