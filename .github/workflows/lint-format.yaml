@@ -2,7 +2,7 @@ name: Lint & Format
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths: [ "**/*.py", "pyproject.toml", "requirements.txt" ]
   pull_request:
 
