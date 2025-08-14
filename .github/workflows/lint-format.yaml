@@ -1,0 +1,36 @@
+name: Lint & Format
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ "**/*.py", "pyproject.toml", "requirements.txt" ]
+  pull_request:
+
+jobs:
+  lint-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Descarga el repo
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Instala Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"   # ajusta la versión si necesitas
+
+      # Instala black y ruff
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black ruff
+
+      # Ejecuta Ruff (linter)
+      - name: Run Ruff
+        run: ruff check .
+
+      # Ejecuta Black (formateador)
+      - name: Run Black
+        run: black --check .
